@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<conio.h>
+
+void swap(int* x,int* y)
+{
+ int temp=*x;
+ *x=*y;
+ *y=temp;
+}
+ 
+int arrange(int a[], int start, int end)
+{
+  int pivot=a[end];
+  int i=(start-1);
+  int j;
+  
+  for(j=0;j<=end-1;j++)
+  {
+   if(a[j]<=pivot)
+   {
+    i++;
+    swap(&a[i],&a[j]);
+   }
+  }
+  swap(&a[i+1],&a[end]);
+  return(i+1);
+}
+
+void sort(int a[], int start,int end)
+{
+  if(start<end)
+  {
+    int no=arrange(a,start,end);
+    sort(a,start,no-1);
+    sort(a,no+1,end);
+  }
+ }
+ 
+ int main()
+ {
+   int n,i,b[]={7,4,6,2,3,9,8};
+   n= sizeof(b)/sizeof(b[0]);
+   for(i=0;i<=n;i++)
+   printf("%d",b[i])
+   sort(b,0,n-1);
+   printf("after sorting);
+   for(i=0;i<=n;i++)
+   printf("%d",b[i])
+   
+   return 0;
+   
+  }
+   
+   
